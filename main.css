@@ -5,33 +5,40 @@
     --card-back: #a80000;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
 
 html, body {
     height: 100%; width: 100%;
-    overflow: hidden; /* No scrolling */
+    overflow: hidden; 
     font-family: 'Segoe UI', sans-serif;
     background: radial-gradient(circle, var(--felt-green) 0%, var(--felt-dark) 100%);
 }
 
 .game-container {
-    width: 100%; height: 100%;
-    display: flex; flex-direction: column;
-    justify-content: space-evenly; align-items: center;
+    color: #ffe5ec;
+    width: 100%; 
+    height: 100%;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-evenly; 
+    align-items: center;
     padding: 10px;
 }
 
-/* THE GRID */
+
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5vh;
     height: 55vh;
-    aspect-ratio: 3 / 4.2; /* Tall Poker Card Shape */
+    aspect-ratio: 3 / 4.2; 
     perspective: 1000px;
 }
 
-/* THE OUTER CARD (Handles Distribution/Dealing) */
 .card-wrapper {
     position: relative;
     width: 100%;
@@ -40,15 +47,20 @@ html, body {
 }
 
 @keyframes dealIn {
-    from { transform: translateY(100vh) rotate(20deg); opacity: 0; }
-    to { transform: translateY(0) rotate(0deg); opacity: 1; }
+    from { 
+        transform: translateY(100vh) rotate(20deg); 
+        opacity: 0; 
+    }
+    to { 
+        transform: translateY(0) rotate(0deg); 
+        opacity: 1; 
+    }
 }
 
 .card-wrapper.dealing {
     animation: dealIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
-/* THE INNER CARD (Handles 3D Flip) */
 .card-inner {
     position: relative;
     width: 100%;
@@ -58,22 +70,23 @@ html, body {
     cursor: pointer;
 }
 
-/* Flip Logic */
 .flipped .card-inner, .found .card-inner {
     transform: rotateY(180deg);
 }
 
 .card-front, .card-back {
     position: absolute;
-    width: 100%; height: 100%;
+    width: 100%; 
+    height: 100%;
     backface-visibility: hidden;
     border-radius: 8px;
     border: 3px solid white;
-    display: flex; justify-content: center; align-items: center;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
-/* The Number Side */
 .card-front {
     background: white;
     color: #222;
@@ -82,7 +95,6 @@ html, body {
     transform: rotateY(180deg);
 }
 
-/* The Pattern Side */
 .card-back {
     background: var(--card-back);
     background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.05) 10px, rgba(255,255,255,0.05) 20px);
@@ -96,7 +108,6 @@ html, body {
     background-color: #f8fff8;
 }
 
-/* Wrong Guess Animation */
 .wrong .card-inner {
     animation: shake 0.4s;
 }
@@ -107,34 +118,81 @@ html, body {
     75% { transform: rotateY(180deg) translateX(10px); }
 }
 
-/* STATS & BUTTONS */
 .stats {
-    display: flex; gap: 30px;
+    display: flex; 
+    gap: 30px;
     background: rgba(0,0,0,0.5);
-    padding: 10px 30px; border-radius: 50px; border: 1px solid var(--gold);
+    padding: 10px 30px; 
+    border-radius: 50px; 
+    border: 1px solid var(--gold);
 }
-.stat-box { text-align: center; }
-.stat-label { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; }
-.stat-value { font-size: 1.2rem; font-weight: bold; color: white; }
-.next-number { color: white; font-size: 1.1rem; }
-#nextNumber { color: var(--gold); font-weight: bold; }
+.stat-box { 
+    text-align: center; 
+}
+.stat-label { 
+    font-size: 0.7rem; 
+    color: var(--gold); 
+    text-transform: uppercase; 
+}
+.stat-value { 
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    color: white; 
+}
+.next-number { 
+    color: white; 
+    font-size: 1.1rem; 
+}
+#nextNumber { 
+    color: var(--gold); 
+    font-weight: bold; 
+}
 
-.buttons { display: flex; gap: 15px; }
+.buttons { 
+    display: flex; 
+    gap: 15px; 
+}
 button {
-    padding: 12px 24px; border: none; border-radius: 5px;
-    font-weight: bold; cursor: pointer; text-transform: uppercase;
+    padding: 12px 24px; 
+    border: none; 
+    border-radius: 5px;
+    font-weight: bold; 
+    cursor: pointer; 
+    text-transform: uppercase;
 }
-.reset-btn { background: #555; color: white; }
-.new-game-btn { background: var(--gold); color: black; }
+.reset-btn { 
+    background: #555; 
+    color: white; 
+}
+.new-game-btn { 
+    background: var(--gold); 
+    color: black; 
+}
 
-/* MODAL */
 .modal {
-    display: none; position: fixed; top: 0; left: 0; 
-    width: 100%; height: 100%; background: rgba(0,0,0,0.9);
-    z-index: 1000; justify-content: center; align-items: center;
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.9);
+    z-index: 1000; 
+    justify-content: center; 
+    align-items: center;
 }
 .modal-content {
-    background: white; padding: 40px; border-radius: 15px; text-align: center;
-    border: 4px solid var(--gold); width: 80%; max-width: 350px; color: #333;
+    background: white; 
+    padding: 40px; 
+    border-radius: 15px; 
+    text-align: center;
+    border: 4px solid var(--gold); 
+    width: 80%; 
+    max-width: 350px; 
+    color: #333;
 }
-.message { height: 20px; color: var(--gold); font-weight: bold; }
+.message { 
+    height: 20px; 
+    color: var(--gold); 
+    font-weight: bold; 
+}

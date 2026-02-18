@@ -8,7 +8,6 @@ let isProcessing = false;
 
 function initGame() {
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    // Shuffle
     cards = numbers.sort(() => Math.random() - 0.5);
     
     currentNumber = 1;
@@ -28,12 +27,10 @@ function renderCards() {
     grid.innerHTML = '';
     
     cards.forEach((number, index) => {
-        // Create the Outer Wrapper (for Dealing)
         const wrapper = document.createElement('div');
         wrapper.className = 'card-wrapper';
         wrapper.style.animationDelay = `${index * 0.1}s`;
         
-        // Create the Inner Card (for Flipping)
         wrapper.innerHTML = `
             <div class="card-inner">
                 <div class="card-back">♠</div>
@@ -44,7 +41,6 @@ function renderCards() {
         wrapper.onclick = () => handleFlip(wrapper, number);
         grid.appendChild(wrapper);
         
-        // Start the Dealing animation
         setTimeout(() => wrapper.classList.add('dealing'), 50);
     });
 }
@@ -100,7 +96,6 @@ function updateDisplay() {
 
 function resetBoard() {
     currentNumber = 1;
-    // We only remove flip/wrong/found classes, we DON'T re-render
     document.querySelectorAll('.card-wrapper').forEach(c => {
         c.classList.remove('flipped', 'found', 'wrong');
     });
