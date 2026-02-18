@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Sequential Cards</title>
+            <script src="app.js" defer></script>
+                <link rel="stylesheet" href="main.css">
+        </head>
+        <body>
+            <div class="game-container">
+                <h1>Find Sequential Cards</h1>
+                
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="stat-label">Time</div>
+                        <div class="stat-value" id="timer">00:00</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Moves</div>
+                        <div class="stat-value" id="moves">0</div>
+                    </div>
+                </div>
+
+                <div class="next-number">
+                    Find: <span id="nextNumber">1</span>
+                </div>
+
+                <div class="message" id="message"></div>
+
+                <div class="cards-grid" id="cardsGrid"></div>
+
+                <div class="buttons">
+                    <button class="reset-btn" onclick="resetGame()"> Reset</button>
+                    <button class="new-game-btn" onclick="newGame()"> New Game</button>
+                </div>
+            </div> 
+            
+            <div id="winModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="suit-icon">♠</span>
+                        <h2>CONGRATULATIONS!</h2>
+                        <span class="suit-icon">♥</span>
+                    </div>
+                    <p>You've cleared the table!</p>
+                    <div class="final-stats">
+                        <div><strong>TIME:</strong> <span id="finalTime">00:00</span></div>
+                        <div><strong>MOVES:</strong> <span id="finalMoves">0</span></div>
+                    </div>
+                    <button class="new-game-btn" onclick="closeModal(); newGame();">Play Again</button>
+                </div>
+            </div>
+        </body>
+    </html>
